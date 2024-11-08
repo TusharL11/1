@@ -3,6 +3,7 @@
 •Withdraw Money
 
 // SPDX-License-Identifier: MIT
+SPDX (Software Package Data Exchange) is a standard format for specifying software licenses. It’s used to clarify the licensing of software projects, making it easier to determine the terms under which code can be used, modified, and shared.
 pragma solidity ^0.8.0;
 
 // Creating a contract
