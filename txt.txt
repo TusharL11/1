@@ -71,3 +71,53 @@ contract StructDemo {
     }
 }
 
+
+1. Ethereum and Smart Contracts
+Ethereum Blockchain: Ethereum is a decentralized platform that runs smart contracts, which are self-executing programs with the terms of the contract directly written into code. Ethereum allows developers to build decentralized applications (dApps) using smart contracts.
+
+Smart Contracts: These are programs deployed on the Ethereum blockchain that execute automatically when certain conditions are met. They are immutable (once deployed, they cannot be changed) and can hold, receive, and send Ether (Ethereum’s native cryptocurrency).
+
+2. Solidity Basics
+Solidity: Solidity is the primary programming language for writing smart contracts on Ethereum. It’s statically typed, which means variables need to be declared with a type (like int or string).
+
+Pragma Directive: pragma solidity ^0.8.0; tells the compiler which version of Solidity to use, and the ^ symbol ensures compatibility with versions from 0.8.0 up to but not including 0.9.0.
+
+3. Contract Structure
+Contract Declaration: In Solidity, a contract is analogous to a class in object-oriented programming. Contracts contain functions and state variables and represent the code and data residing at a specific address on the Ethereum blockchain.
+
+State Variables: These are variables whose values are permanently stored on the blockchain. In this contract, emps is a state variable, meaning it persists on the blockchain and keeps track of employee data.
+
+Data Types:
+
+int: Represents a signed integer (positive or negative).
+string: Represents text data.
+uint: Represents an unsigned integer (non-negative).
+4. Structs in Solidity
+Struct: A struct is a custom data type that allows grouping multiple data types. In this contract, Employee is a struct with an integer empid and three strings (name, department, and designation). Structs help keep related data organized and make the contract more readable and efficient.
+5. Arrays in Solidity
+Dynamic Array: An array is a data structure used to store multiple values of the same data type. Employee[] emps; is a dynamic array that can grow or shrink in size. This array holds Employee structs, allowing the contract to store multiple employee records.
+6. Memory and Storage in Solidity
+Memory: Memory variables are temporary and only exist during the execution of a function. For example, in addEmployee(), the Employee memory e variable is stored in memory. Once the function call ends, this variable is discarded.
+
+Storage: Storage is persistent, meaning variables stored here remain on the blockchain after the function ends. State variables (like emps) are stored in storage.
+
+7. Functions in Solidity
+Function Declaration: A function is a reusable piece of code that performs a specific action. Solidity functions can have visibility modifiers (e.g., public, private, internal, and external) to control who can call them.
+
+Function Modifiers:
+
+public: Functions declared as public can be accessed by anyone, including external accounts and other contracts.
+view: A view function indicates that it does not modify the state. It can read data from the blockchain but cannot alter it.
+Function Inputs and Outputs: Functions in Solidity can accept parameters and return values. The addEmployee() function takes four input parameters (empid, name, department, designation) to create an employee record, while getEmployee() takes empid as input and returns three string values.
+
+8. Control Structures
+For Loop: Solidity has traditional loop structures like for, which is used here to iterate over the emps array to find an employee by empid. The loop continues until it finds a match or reaches the end of the array.
+9. Error Handling
+Returning "Not Found": Solidity doesn’t have native error handling (like try-catch) in this contract’s version, so instead, getEmployee() returns "Not Found" for each field if the employee ID is not found. This provides a way for the caller to know that the employee record does not exist.
+10. Memory Management
+Passing Parameters by Memory: The function addEmployee() specifies string memory as the type for string parameters. This tells Solidity to keep a temporary copy in memory instead of storage, as it’s more efficient for parameters that don’t need to persist after function execution.
+Putting It All Together: Code Flow
+Deployment: When deployed, this contract doesn’t have any employees in emps. The deployer or any user can add employees using addEmployee().
+Adding Employees: Calling addEmployee() stores an Employee struct with the specified details in the emps array.
+Retrieving Employees: getEmployee() searches emps for a matching empid. If found, it returns the name, department, and designation. If not, it returns "Not Found" for each field.
+
